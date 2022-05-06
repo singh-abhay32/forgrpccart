@@ -1,0 +1,43 @@
+{
+  "name": "assignment",
+  "version": "1.0.0",
+  "description": "\"this is my Assignment\"",
+  "main": "index.js",
+  "scripts": {
+    "debug": "nodemon --exec \"node --inspect-brk=0.0.0.0:9229 --require ts-node/register src/index.ts\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.ts",
+    "grpcGenerate": "C:/Users/Abhay/Desktop/forgrpccart/node_modules/.bin/grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./ --grpc_out=grpc_js:./ -I ./ ./proto/*.proto && C:/Users/Abhay/Desktop/forgrpccart/node_modules/.bin/grpc_tools_node_protoc --plugin=protoc-gen-ts=C:/Users/Abhay/Desktop/forgrpccart/node_modules/.bin/protoc-gen-ts.cmd --ts_out=grpc_js:./ -I ./ ./proto/*.proto",
+    "clean": "rimraf dist/ && rimraf ./proto/*_pb.*"
+  },
+  "author": "Abhay",
+  "license": "ISC",
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/express": "^4.17.13",
+    "@types/mysql": "^2.15.21",
+    "axios": "^0.26.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "express-validator": "^6.14.0",
+    "expresss": "^0.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  },
+  "devDependencies": {
+    "@grpc/grpc-js": "^1.5.1",
+    "@grpc/proto-loader": "^0.6.5",
+    "@types/cors": "^2.8.12",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/lodash": "^4.14.182",
+    "google-protobuf": "^3.19.4",
+    "grpc": "^1.24.11",
+    "grpc_tools_node_protoc_ts": "^5.3.2",
+    "grpc-tools": "^1.11.2"
+  }
+}
