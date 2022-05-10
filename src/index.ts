@@ -1,9 +1,14 @@
 import http from 'http';
 import express, { Express } from 'express';
-import routes from './routes';
-import { datalog } from './task-manager/db';
-import cors from 'cors';
 import main from '../proto/server';
+import "reflect-metadata"
+import { DataSource } from "typeorm";
+import { datalog } from './task-manager/db';
+import routes from './routes';
+import cors from 'cors';
+import { createConnection } from "typeorm";
+import dbConfig from "./db";
+
 
 var mysql = require('mysql');
 const router: Express = express();
@@ -22,12 +27,14 @@ router.use((req, res, next) => {
     next();
 });
 
-datalog.connect(function(err:any) {
-    if (err) {
-      return console.error('error: ' + err.message);
-    }  
-    console.log('Connected to the MySQL server.');
-  });
+
+
+// datalog.connect(function(err:any) {
+//     if (err) {
+//       return console.error('error: ' + err.message);
+//     }  
+//     console.log('Connected to the MySQL server.');
+//   });
   router.use(cors());
   router.use('/', routes);
   
@@ -39,7 +46,18 @@ router.use((req, res) => {
 });
 
 const httpServer = http.createServer(router);
+const startServer = (async function () {
+const db =  createConnection(dbConfig)
+if((await db).isConnected)
+{
+    console.log("db conncted");
+}
+})
+
+
 const PORT: any = process.env.PORT ?? 6000;
 httpServer.listen(PORT, () => console.log(`The server is running on port ${PORT}`));
+startServer();
+
 main()
 

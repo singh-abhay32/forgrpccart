@@ -26,6 +26,39 @@ function deserialize_helloworld_HelloRequest(buffer_arg) {
   return proto_random_pb.HelloRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_helloworld_deluserReply(arg) {
+  if (!(arg instanceof proto_random_pb.deluserReply)) {
+    throw new Error('Expected argument of type helloworld.deluserReply');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_helloworld_deluserReply(buffer_arg) {
+  return proto_random_pb.deluserReply.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_helloworld_updateuserReply(arg) {
+  if (!(arg instanceof proto_random_pb.updateuserReply)) {
+    throw new Error('Expected argument of type helloworld.updateuserReply');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_helloworld_updateuserReply(buffer_arg) {
+  return proto_random_pb.updateuserReply.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_helloworld_updtaeuserRequest(arg) {
+  if (!(arg instanceof proto_random_pb.updtaeuserRequest)) {
+    throw new Error('Expected argument of type helloworld.updtaeuserRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_helloworld_updtaeuserRequest(buffer_arg) {
+  return proto_random_pb.updtaeuserRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_helloworld_userReply(arg) {
   if (!(arg instanceof proto_random_pb.userReply)) {
     throw new Error('Expected argument of type helloworld.userReply');
@@ -71,6 +104,28 @@ var GreeterService = exports.GreeterService = {
     requestDeserialize: deserialize_helloworld_userRequest,
     responseSerialize: serialize_helloworld_userReply,
     responseDeserialize: deserialize_helloworld_userReply,
+  },
+  deleteUser: {
+    path: '/helloworld.Greeter/deleteUser',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_random_pb.userRequest,
+    responseType: proto_random_pb.deluserReply,
+    requestSerialize: serialize_helloworld_userRequest,
+    requestDeserialize: deserialize_helloworld_userRequest,
+    responseSerialize: serialize_helloworld_deluserReply,
+    responseDeserialize: deserialize_helloworld_deluserReply,
+  },
+  updateUser: {
+    path: '/helloworld.Greeter/updateUser',
+    requestStream: false,
+    responseStream: false,
+    requestType: proto_random_pb.updtaeuserRequest,
+    responseType: proto_random_pb.updateuserReply,
+    requestSerialize: serialize_helloworld_updtaeuserRequest,
+    requestDeserialize: deserialize_helloworld_updtaeuserRequest,
+    responseSerialize: serialize_helloworld_updateuserReply,
+    responseDeserialize: deserialize_helloworld_updateuserReply,
   },
 };
 

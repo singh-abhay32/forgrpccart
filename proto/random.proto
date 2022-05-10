@@ -7,6 +7,8 @@ service Greeter {
  
   rpc SayHello (HelloRequest) returns (HelloReply) {}
   rpc Getuser (userRequest)returns (userReply){}
+  rpc deleteUser (userRequest)returns (deluserReply){}
+  rpc updateUser (updtaeuserRequest)returns (updateuserReply){}
   
 }
 message HelloRequest {
@@ -19,6 +21,21 @@ message HelloReply {
 message userRequest {
   int32 id = 1;
 }
+message deluserReply{
+   string msg = 1;
+}
+message updateuserReply{
+  string name = 1;
+  string Email = 2;
+  string phone = 3;
+}
+message updtaeuserRequest{
+  int32 id = 1;
+  string Name = 2;
+  string Email =3;
+  string phone =4;
+}
+
 
 message userReply{
   string name  = 1;

@@ -66,6 +66,81 @@ export namespace userRequest {
     }
 }
 
+export class deluserReply extends jspb.Message { 
+    getMsg(): string;
+    setMsg(value: string): deluserReply;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): deluserReply.AsObject;
+    static toObject(includeInstance: boolean, msg: deluserReply): deluserReply.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: deluserReply, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): deluserReply;
+    static deserializeBinaryFromReader(message: deluserReply, reader: jspb.BinaryReader): deluserReply;
+}
+
+export namespace deluserReply {
+    export type AsObject = {
+        msg: string,
+    }
+}
+
+export class updateuserReply extends jspb.Message { 
+    getName(): string;
+    setName(value: string): updateuserReply;
+    getEmail(): string;
+    setEmail(value: string): updateuserReply;
+    getPhone(): string;
+    setPhone(value: string): updateuserReply;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): updateuserReply.AsObject;
+    static toObject(includeInstance: boolean, msg: updateuserReply): updateuserReply.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: updateuserReply, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): updateuserReply;
+    static deserializeBinaryFromReader(message: updateuserReply, reader: jspb.BinaryReader): updateuserReply;
+}
+
+export namespace updateuserReply {
+    export type AsObject = {
+        name: string,
+        email: string,
+        phone: string,
+    }
+}
+
+export class updtaeuserRequest extends jspb.Message { 
+    getId(): number;
+    setId(value: number): updtaeuserRequest;
+    getName(): string;
+    setName(value: string): updtaeuserRequest;
+    getEmail(): string;
+    setEmail(value: string): updtaeuserRequest;
+    getPhone(): string;
+    setPhone(value: string): updtaeuserRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): updtaeuserRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: updtaeuserRequest): updtaeuserRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: updtaeuserRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): updtaeuserRequest;
+    static deserializeBinaryFromReader(message: updtaeuserRequest, reader: jspb.BinaryReader): updtaeuserRequest;
+}
+
+export namespace updtaeuserRequest {
+    export type AsObject = {
+        id: number,
+        name: string,
+        email: string,
+        phone: string,
+    }
+}
+
 export class userReply extends jspb.Message { 
     getName(): string;
     setName(value: string): userReply;

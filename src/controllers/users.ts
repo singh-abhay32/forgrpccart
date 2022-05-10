@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction, query } from 'express';
 import client from '../../proto/client';
-import { HelloRequest, userRequest } from '../../proto/random_pb';
+import { HelloRequest, updtaeuserRequest, userRequest } from '../../proto/random_pb';
 import { datalog } from '../task-manager/db';
 
 interface Post {
@@ -42,20 +42,43 @@ const getAllUsers = async (req: Request, res: Response) => {
     });
 };
 const updateUser = async (req: Request, res: Response) => {
-    let query =
-        `UPDATE users SET name = ${datalog.escape(req.body.name)} WHERE id = ${(datalog.escape(req.params.id))}`;
-    datalog.query(query, [req.body.name, req.params.id], (err, rows) => {
-        if (err) throw err;
-        console.log(rows);
-        res.send({ message: "updated successfully" })
+    // let query =
+    //     `UPDATE users SET name = ${datalog.escape(req.body.name)}${datalog.escape(req.body.Email)}${datalog.escape(req.body.phone)} WHERE id = ${(datalog.escape(req.params.id))}`;
+    // datalog.query(query, [req.body.name, req.params.id], (err, rows) => {
+    //     if (err) throw err;
+    //     console.log(rows);
+    //     res.send({ message: "updated successfully" })
+    // });
+    
+    const {id,Name,Email,Phone} = req.body;
+    
+    const request = new updtaeuserRequest();
+    console.log(req.body);
+    request.setId(id);
+    request.setName(Name);
+    request.setEmail(Email);
+    request.setPhone(Phone);
+
+    client.updateUser(request,(error:any,user:any)=>{
+        if(error)throw error;
+        else{
+            console.log(user);
+            
+        }
+        res.json(user.toObject());
     });
 };
 const deleteUser = async (req: Request, res: Response) => {
-    let query = `DELETE FROM users WHERE id = ${(datalog.escape(req.params.id))}`;
-    datalog.query(query, (err, rows) => {
-        if (err) throw err;
-        res.send({ message: "Deleted Successfully" })
-    });
+  const {id} = req.body;
+  const request = new userRequest();
+  request.setId(id)
+  client.deleteUser(request,(error:any,user:any)=>{
+      if(error)throw error;
+      else{
+          console.log(user);
+      }
+      res.json(user.toObject());
+  });
 };
 const addUser = async (req: Request, res: Response) => {
     const { name, email, phone } = req.body;
@@ -82,3 +105,14 @@ const SayHello = async (req: Request, res: Response) => {
 };
 
 export default { getAllUsers, getUser, addUser, updateUser, deleteUser, SayHello };
+
+
+
+function Email(Email: any) {
+    throw new Error('Function not implemented.');
+}
+
+function phone(phone: any) {
+    throw new Error('Function not implemented.');
+}
+
